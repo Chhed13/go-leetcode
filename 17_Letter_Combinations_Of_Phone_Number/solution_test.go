@@ -12,7 +12,7 @@ type testCase struct {
 var testCases = []testCase{
 	{
 		"23",
-		[]string {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"},
+		[]string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"},
 	},
 }
 

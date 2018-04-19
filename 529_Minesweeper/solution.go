@@ -55,7 +55,7 @@ The range of the input matrix's height and width is [1,50].
 The click position will only be an unrevealed square ('M' or 'E'), which also means the input board contains at least one clickable square.
 The input board won't be a stage when game is over (some mines have been revealed).
 For simplicity, not mentioned rules should be ignored in this problem. For example, you don't need to reveal all the unrevealed mines when the game is over, consider any cases that you will win the game or flag any squares.
- */
+*/
 
 func updateBoard(board [][]byte, click []int) [][]byte {
 	//update exact click
@@ -71,8 +71,8 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 			//else update to B
 			board[click[0]][click[1]] = 'B'
 			//and run to adjusent cells
-			for i := click[0]-1; i <= click[0]+1; i++ {
-				for j := click[1]-1; j <= click[1]+1; j++ {
+			for i := click[0] - 1; i <= click[0]+1; i++ {
+				for j := click[1] - 1; j <= click[1]+1; j++ {
 					if i == click[0] && j == click[1] ||
 						i < 0 || i >= len(board) ||
 						j < 0 || j >= len(board[i]) {
@@ -90,8 +90,8 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 
 func getNearMines(board [][]byte, click []int) int {
 	mines := 0
-	for i := click[0]-1; i <= click[0]+1; i++ {
-		for j := click[1]-1; j <= click[1]+1; j++ {
+	for i := click[0] - 1; i <= click[0]+1; i++ {
+		for j := click[1] - 1; j <= click[1]+1; j++ {
 			if i == click[0] && j == click[1] ||
 				i < 0 || i >= len(board) ||
 				j < 0 || j >= len(board[i]) {

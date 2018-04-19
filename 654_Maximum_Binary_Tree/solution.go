@@ -23,17 +23,16 @@ Output: return the tree root node representing the following tree:
         1
 Note:
 The size of the given array will be in the range [1,1000].
- */
+*/
 
 /**
 * Definition for a binary tree node.
-*/
+ */
 type TreeNode struct {
-    Val int
-    Left *TreeNode
-    Right *TreeNode
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
-
 
 func constructMaximumBinaryTree(nums []int) *TreeNode {
 	if nums == nil || len(nums) == 0 {
@@ -46,9 +45,9 @@ func constructMaximumBinaryTree(nums []int) *TreeNode {
 			maxv = nv
 		}
 	}
-	maxNode := TreeNode {
-		Val: maxv,
-		Left: constructMaximumBinaryTree(nums[:maxk]),
+	maxNode := TreeNode{
+		Val:   maxv,
+		Left:  constructMaximumBinaryTree(nums[:maxk]),
 		Right: constructMaximumBinaryTree(nums[maxk+1:]),
 	}
 	return &maxNode

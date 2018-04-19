@@ -22,18 +22,22 @@ Input: [1,2,3,4,5,6,7,8,9]
 Output: 2
 Follow up:
 Can you do it in O(n) time?
- */
+*/
 
 func wiggleMaxLength(nums []int) int {
-	if len(nums) == 0 { return 0}
-	if len(nums) == 1 { return 1}
+	if len(nums) == 0 {
+		return 0
+	}
+	if len(nums) == 1 {
+		return 1
+	}
 	max, c := 1, 1
 	prevN := nums[0]
 	var isSet, isDown bool
 
 	for i := 1; i < len(nums); i++ {
 		if !isSet {
-			if (nums[0] == nums[i]) {
+			if nums[0] == nums[i] {
 				continue
 			} else {
 				isSet = true

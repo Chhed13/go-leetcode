@@ -9,13 +9,13 @@ type testCase struct {
 
 var testCases = []testCase{
 	{
-		[]int{3, 6, 1, 0,}, 1,
+		[]int{3, 6, 1, 0}, 1,
 	},
 	{
-		[]int{1, 2, 3, 4,}, -1,
+		[]int{1, 2, 3, 4}, -1,
 	},
 	{
-		[]int{0, 0, 3, 2,}, -1,
+		[]int{0, 0, 3, 2}, -1,
 	},
 }
 

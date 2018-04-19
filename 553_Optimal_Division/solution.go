@@ -27,26 +27,28 @@ Note:
 The length of the input array is [1, 10].
 Elements in the given array will be in range [2, 1000].
 There is only one optimal division for each test case.
- */
+*/
 
 func optimalDivision(nums []int) string {
-    ans := strconv.Itoa(nums[0])
-    if len(nums) == 1 { return ans }
-    if len(nums) == 2 {
-        ans += "/" + strconv.Itoa(nums[1])
-        return ans
-    }
-    ans += "/("
+	ans := strconv.Itoa(nums[0])
+	if len(nums) == 1 {
+		return ans
+	}
+	if len(nums) == 2 {
+		ans += "/" + strconv.Itoa(nums[1])
+		return ans
+	}
+	ans += "/("
 
-    add_slash := false
-    for i := 1; i < len(nums); i++ {
-        if add_slash {
-            ans += "/"
-        }
-        ans += strconv.Itoa(nums[i])
-        add_slash = true
-    }
+	add_slash := false
+	for i := 1; i < len(nums); i++ {
+		if add_slash {
+			ans += "/"
+		}
+		ans += strconv.Itoa(nums[i])
+		add_slash = true
+	}
 
-    ans += ")"
-    return ans
+	ans += ")"
+	return ans
 }

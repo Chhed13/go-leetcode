@@ -14,7 +14,7 @@ var testCases = []testCase{
 		[]int{}, 0,
 	},
 	{
-		[]int{4, 3, 2, 6,}, 26,
+		[]int{4, 3, 2, 6}, 26,
 	},
 }
 

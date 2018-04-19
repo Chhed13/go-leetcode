@@ -1,8 +1,8 @@
 package _675_Cut_Off_Trees_for_Golf_Event
 
 import (
-	"sort"
 	"fmt"
+	"sort"
 )
 
 /* https://leetcode.com/problems/cut-off-trees-for-golf-event/description/
@@ -90,7 +90,7 @@ func getStep(forest [][]int, start [2]int, finish [2]int, m int, n int) int {
 	queue.Push(start)
 	visited[start[0]][start[1]] = true
 
-	for ; queue.Size() > 0; {
+	for queue.Size() > 0 {
 		s := queue.Size()
 		for i := 0; i < s; i++ {
 			q := queue.Pull()

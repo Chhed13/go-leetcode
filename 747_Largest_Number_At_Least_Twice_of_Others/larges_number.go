@@ -34,7 +34,7 @@ func dominantIndex(nums []int) int {
 		return 0
 	}
 	var max, secondMax, index int
-	for i,iv := range nums {
+	for i, iv := range nums {
 		if iv > max {
 			max, secondMax = iv, max
 			index = i

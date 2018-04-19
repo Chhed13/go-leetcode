@@ -26,14 +26,15 @@ F(2) = (0 * 2) + (1 * 6) + (2 * 4) + (3 * 3) = 0 + 6 + 8 + 9 = 23
 F(3) = (0 * 3) + (1 * 2) + (2 * 6) + (3 * 4) = 0 + 2 + 12 + 12 = 26
 
 So the maximum value of F(0), F(1), F(2), F(3) is F(3) = 26.
- */
-
+*/
 
 func maxRotateFunction(A []int) int {
-	if len(A) == 0 { return 0 }
+	if len(A) == 0 {
+		return 0
+	}
 	max := math.MinInt64
-	for i := len(A)-1; i >= 0; i-- {
-		A = append(A[1:],A[0])
+	for i := len(A) - 1; i >= 0; i-- {
+		A = append(A[1:], A[0])
 		f := rotateFunc(A)
 		if f > max {
 			max = f
@@ -44,8 +45,8 @@ func maxRotateFunction(A []int) int {
 
 func rotateFunc(A []int) int {
 	var sum int
-	for i,v := range A {
-		sum +=i*v
+	for i, v := range A {
+		sum += i * v
 	}
 	return sum
 }

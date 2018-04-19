@@ -34,25 +34,25 @@ import "fmt"
 
 func findRotateSteps(ring string, key string) int {
 	// pre fill
-	ringMap := map[rune][]int {}
-	for k,v := range ring {
+	ringMap := map[rune][]int{}
+	for k, v := range ring {
 		ringMap[v] = append(ringMap[v], k)
 	}
 
-	current := []int{0} //default state
+	current := []int{0}      //default state
 	for ki, k := range key { //move by key letters
 		prev := current
 		current = make([]int, len(ringMap[k]))
 		for ri, r := range ringMap[k] { //iterate on current key letter possibilities on ring
-			current[ri] = 1005000 // max value
+			current[ri] = 1005000     // max value
 			for pi, p := range prev { //match variants with previous letter possibilities
 				prevPosition := 0
 				if ki > 0 {
 					prevPosition = ringMap[rune(key[ki-1])][pi] //find position of previous letter on ring
 				}
 
-				newR := min(r,prevPosition,len(ring))
-				if current[ri] > newR + p {
+				newR := min(r, prevPosition, len(ring))
+				if current[ri] > newR+p {
 					current[ri] = newR + p
 				}
 			}
@@ -73,7 +73,7 @@ func findRotateSteps(ring string, key string) int {
 	return result + len(key)
 }
 
-func min (current, newVal, ringSize int)  int {
+func min(current, newVal, ringSize int) int {
 	//straight
 	var t1, t2 int
 	if current < newVal {

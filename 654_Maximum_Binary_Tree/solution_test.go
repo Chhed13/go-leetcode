@@ -11,7 +11,7 @@ type testCase struct {
 
 var testCases = []testCase{
 	{
-		tcase:  []int{3, 2, 1, 6, 0, 5,},
+		tcase:  []int{3, 2, 1, 6, 0, 5},
 		answer: []int{6, 3, 5, 2, 0, 1},
 	},
 }
