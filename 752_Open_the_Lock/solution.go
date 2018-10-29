@@ -36,22 +36,6 @@ target will not be in the list deadends.
 Every string in deadends and the string target will be a string of 4 digits from the 10,000 possibilities '0000' to '9999'.
 */
 
-var queue []string
-
-func enqueue(e string) {
-    queue = append(queue, e)
-}
-
-func dequeue() string {
-    if len(queue) == 0 {
-        return ""
-    }
-
-    e := queue[0]
-    queue = queue[1:]
-    return e
-}
-
 func change(e string, char int, up bool) string {
     // 0 -> 48
     // 9 -> 57
@@ -59,7 +43,10 @@ func change(e string, char int, up bool) string {
         if up {
             return 48 + (b-48+1)%10
         }
-        return 48 + (b-48-1)%10
+        if b == 48 {
+            return 57
+        }
+        return b-1
     }
     switch char {
     case 0:
@@ -75,6 +62,22 @@ func change(e string, char int, up bool) string {
 }
 
 func openLock(deadends []string, target string) int {
+    var queue []string
+
+    enqueue := func(e string) {
+        queue = append(queue, e)
+    }
+
+    dequeue := func() string {
+        if len(queue) == 0 {
+            return ""
+        }
+
+        e := queue[0]
+        queue = queue[1:]
+        return e
+    }
+
     de := map[string]bool{}
     for _, d := range deadends {
         de[d] = true
@@ -83,7 +86,6 @@ func openLock(deadends []string, target string) int {
     level := 0
     enqueue("0000")
     for len(queue) > 0 {
-        //fmt.Println(len(queue))
         size := len(queue)
         for size > 0 {
             e := dequeue()
@@ -99,16 +101,17 @@ func openLock(deadends []string, target string) int {
             used[e] = true
             for i := 0; i < 4; i++ {
                 up := change(e, i, true)
-                if !used[up]{
+                if !used[up] {
                     enqueue(up)
                 }
                 down := change(e, i, false)
-                if !used[down]{
+                if !used[down] {
                     enqueue(down)
                 }
             }
             size--
         }
+        //fmt.Printf("queue: %+v \n", queue)
         level++
     }
     return -1

@@ -1,7 +1,5 @@
 package _200_Number_of_Islands
 
-import "fmt"
-
 /*https://leetcode.com/problems/number-of-islands/
 Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.
@@ -28,22 +26,22 @@ Output: 3
 
 */
 
-var queue [][]int
-
-func enqueue(x int, y int) {
-    queue = append(queue, []int{x, y})
-}
-
-func dequeue() (int, int) {
-    if len(queue) == 0 {
-        return -1, -1
-    }
-    r := queue[0]
-    queue = queue[1:]
-    return r[0], r[1]
-}
-
 func numIslands(grid [][]byte) int {
+    var queue [][]int
+
+    enqueue := func(x int, y int) {
+        queue = append(queue, []int{x, y})
+    }
+
+    dequeue := func() (int, int) {
+        if len(queue) == 0 {
+            return -1, -1
+        }
+        r := queue[0]
+        queue = queue[1:]
+        return r[0], r[1]
+    }
+
     if grid == nil || len(grid) <= 0 {
         return 0
     }
@@ -57,15 +55,12 @@ func numIslands(grid [][]byte) int {
     for i := range grid {
         for j := range grid[i] {
             if used[i][j] || grid[i][j] == 0 {
-                fmt.Printf("used:%d,%d,val:%v \n", i, j, grid[i][j])
-
                 continue
             }
 
             enqueue(i, j)
             used[i][j] = true
             islands++
-            fmt.Printf("islands++: %d", islands)
 
             for ; len(queue) > 0; {
                 x, y := dequeue()
