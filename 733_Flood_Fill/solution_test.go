@@ -31,3 +31,17 @@ func TestSolution(t *testing.T) {
 
     }
 }
+
+func TestSolution2(t *testing.T) {
+    for _, tc := range testCases {
+        answer := floodFill2(tc.image,tc.sr,tc.sc,tc.newColor)
+        for i := range tc.answer {
+            for j := range tc.answer[i] {
+                if answer[i][j] != tc.answer[i][j] {
+                    t.Errorf("expected: %v, got: %v", tc.answer, answer)
+                }
+            }
+        }
+
+    }
+}

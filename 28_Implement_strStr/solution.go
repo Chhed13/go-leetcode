@@ -21,18 +21,26 @@ What should we return when needle is an empty string? This is a great question t
 For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
 */
 
+/* Description
+- for haystack while rest len >= len of needle
+    - for needle scan haystack further - can be replaced as stiring comparison
+        - if chars match - move on needle
+        - break to haystack cycle
+O(haystack * needle) time
+O(1)  memory
+*/
 func strStr(haystack string, needle string) int {
-	if len(needle) == 0 {
-		return 0
-	}
-	if len(haystack) < len(needle) {
-		return -1
-	}
-	w := len(needle)
-	for i := 0; i <= len(haystack) - w; i++ {
-		if needle == haystack[i:i+w]{
-			return i
-		}
-	}
-	return -1
+    if len(needle) == 0 {
+        return 0
+    }
+    if len(haystack) < len(needle) {
+        return -1
+    }
+    w := len(needle)
+    for i := 0; i <= len(haystack)-w; i++ {
+        if needle == haystack[i:i+w] {
+            return i
+        }
+    }
+    return -1
 }

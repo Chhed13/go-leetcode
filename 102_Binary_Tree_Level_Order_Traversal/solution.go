@@ -19,6 +19,12 @@ return its level order traversal as:
 ]
 */
 
+
+/* Description
+Do it with BFS (queue) approach. On start of iteration on next level check size of queue and -1 on each dequeue when the size is 0 -> make +1 to level.
+As variant: ensead of size we can use rotation of 2 queues, result is the same
+*/
+
 // Definition for a binary tree node.
 type TreeNode struct {
     Val   int

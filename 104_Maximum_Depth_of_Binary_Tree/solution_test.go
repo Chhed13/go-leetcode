@@ -48,3 +48,12 @@ func TestSolution(t *testing.T) {
         t.Errorf("expected: %v, got: %v", answer, a)
     }
 }
+
+func TestSolution2(t *testing.T) {
+    t1 := generate()
+    a := maxDepth2(t1)
+
+    if a != answer {
+        t.Errorf("expected: %v, got: %v", answer, a)
+    }
+}

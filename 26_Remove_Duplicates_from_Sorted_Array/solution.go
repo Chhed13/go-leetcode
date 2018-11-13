@@ -39,18 +39,17 @@ for (int i = 0; i < len; i++) {
 */
 
 func removeDuplicates(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-	prev := nums[0]
-	for i:= 1; i < len(nums); {
-		if nums[i] == prev {
-			nums = append(nums[:i], nums[i+1:]...)
-		} else {
-			prev = nums[i]
-			i++
-		}
-	}
+    if len(nums) <= 0 {
+        return 0
+    }
 
-	return len(nums)
+    j := 1
+    for i := range nums {
+        if nums[i] > nums[j-1] {
+            nums[j] = nums[i]
+            j++
+        }
+    }
+
+    return j
 }

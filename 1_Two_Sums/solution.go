@@ -15,16 +15,13 @@ return [0, 1].
 */
 
 func twoSum(nums []int, target int) []int {
-	result := make([]int,2)
-	index := make(map[int]int,len(nums))
-	for i,n := range nums {
-		if j,ok := index[target-n]; ok {
-			result[1] = i
-			result[0] = j
-			break
-		}
-		index[n] = i
-	}
+    m := map[int]int{}
+    for i,in := range nums {
+        if j, ok := m[target-in]; ok {
+            return []int{j,i}
+        }
+        m[in] = i
+    }
 
-	return result
+    return nil
 }

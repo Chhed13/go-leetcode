@@ -21,6 +21,11 @@ Note:
 Bonus points if you could solve it both recursively and iteratively.
 */
 
+/*
+1. make 2 stacks|queues (for left side and to right). Make pushes and pops syncronously with them, but allways mirror order of pushes.
+2. recursive version (bottom up): it is symmetric when Left and Rigth is a mirror of each other, and their childern ether
+*/
+
 // Definition for a binary tree node.
 type TreeNode struct {
     Val   int

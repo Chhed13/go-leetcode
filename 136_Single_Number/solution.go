@@ -18,19 +18,28 @@ Input: [4,1,2,1,2]
 Output: 4
 */
 
+// crazy un-optimized solution
 func singleNumber(nums []int) int {
-	buf := map[int]bool{}
-	for _,n := range nums {
-		if buf[n] {
-			delete(buf, n)
-		} else {
-			buf[n] = true
-		}
-	}
+    buf := map[int]bool{}
+    for _, n := range nums {
+        if buf[n] {
+            delete(buf, n)
+        } else {
+            buf[n] = true
+        }
+    }
 
-	var out int
-	for i := range buf {
-		out = i
-	}
-	return out
+    var out int
+    for i := range buf {
+        out = i
+    }
+    return out
+}
+
+func singleNumber2(nums []int) int {
+    out := 0
+    for _,i := range nums {
+        out ^= i
+    }
+    return out
 }
